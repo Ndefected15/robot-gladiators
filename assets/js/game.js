@@ -16,6 +16,12 @@ console.log(enemyNames);
 var enemyHealth = 50;
 var enemyAttack = 12;
 
+for (var i = 0; i < enemyNames.length; i++) {
+  console.log(enemyNames[i]);
+  console.log(i);
+  console.log(enemyNames[i] + " is at " + i + " index");
+}
+
 var fight = function () {
   // Alert players that they are starting the round
   window.alert("Welcome to Robot Gladiators!");
@@ -31,9 +37,9 @@ var fight = function () {
     console.log(
       playerName +
         " attacked " +
-       enemyName +
+       enemyNames +
         ". " +
-       enemyName +
+       enemyNames +
         " now has " +
         enemyHealth +
         " health remaining."
@@ -41,15 +47,15 @@ var fight = function () {
 
     // check enemy's health
     if (enemyHealth <= 0) {
-      window.alert enemyName + " has died!");
+      window.alert enemyNames + " has died!");
     } else {
-      window.alert enemyName + " still has " + enemyHealth + " health left.");
+      window.alert enemyNames + " still has " + enemyHealth + " health left.");
     }
 
     // remove player's health by subtracting the amount set in the enemyAttack variable
     playerHealth = playerHealth - enemyAttack;
     console.log(
-     enemyName +
+     enemyNames +
         " attacked " +
         playerName +
         ". " +
@@ -83,6 +89,5 @@ var fight = function () {
   } else {
     window.alert("You need to choose a valid option. Try again!");
   }
-};
 
-//fight();
+//fight(enemyRobot);

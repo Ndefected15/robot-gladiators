@@ -12,6 +12,7 @@ var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
+// fight function (now with parameter for enemy's name)
 var fight = function (enemyName) {
   while (playerHealth > 0 && enemyHealth > 0) {
     // ask player if they'd like to fight or run
@@ -35,7 +36,7 @@ var fight = function (enemyName) {
     }
 
     // remove enemy's health by subtracting the amount set in the playerAttack variable
-    enemyHealth = enemyHealth - playerAttack;
+    enemyHealth = Math.max(0, enemyHealth - playerAttack);
     console.log(
       playerName +
         " attacked " +
@@ -52,7 +53,7 @@ var fight = function (enemyName) {
       window.alert(enemyName + " has died!");
 
       // award player money for winning
-      playerMoney = playerMoney + 20;
+      playerMoney = Math.max(0, playerMoney - 10);
 
       // leave while() loop since enemy is dead
       break;
@@ -61,7 +62,7 @@ var fight = function (enemyName) {
     }
 
     // remove players's health by subtracting the amount set in the enemyAttack variable
-    playerHealth = playerHealth - enemyAttack;
+    playerHealth = Math.max(0, playerHealth - enemyAttack);
     console.log(
       enemyName +
         " attacked " +
@@ -75,9 +76,9 @@ var fight = function (enemyName) {
 
     // check player's health
     if (playerHealth <= 0) {
-      window.alert("You have lost your robot in battle! Game Over!");
-      break;
+      window.alert(playerName + " has died!");
       // leave while() loop if player is dead
+      break;
     } else {
       window.alert(playerName + " still has " + playerHealth + " health left.");
     }
